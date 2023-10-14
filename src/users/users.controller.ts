@@ -3,6 +3,7 @@ import {
   Controller,
   Delete,
   Get,
+  HttpCode,
   HttpStatus,
   Param,
   Post,
@@ -13,6 +14,7 @@ import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { UsersService } from './users.service';
 import { ApiTags } from '@nestjs/swagger';
+import { LoginDto } from './dto/login-user.dto';
 
 @ApiTags('Users')
 @Controller('users')
@@ -23,7 +25,6 @@ export class UsersController {
   async createUser(@Res() response, @Body() createUserDto: CreateUserDto) {
     try {
       const newUsers = await this.usersService.createUser(createUserDto);
-
       return response
         .status(HttpStatus.CREATED)
         .json({ message: 'User has been created successfully', newUsers });
