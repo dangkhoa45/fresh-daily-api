@@ -1,8 +1,8 @@
-import { Prop, SchemaFactory, Schema } from '@nestjs/mongoose';
+import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { ApiProperty } from '@nestjs/swagger';
 import { Document } from 'mongodb';
 
-export type UserDocument = Document & Users;
+export type UserDocument = Users & Document;
 
 @Schema()
 export class Users {
